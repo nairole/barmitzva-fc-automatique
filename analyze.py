@@ -214,7 +214,8 @@ def publish(vod: dict, matches: list[dict]):
         if AUTO_PUBLISH:
             api('/api/review', 'POST', payload)
     if AUTO_PUBLISH and (matches or MARK_SCANNED):
-        api('/api/review', 'PATCH', {'vodId': vod['id'], 'status': 'reviewed'})
+        status = 'reviewed' if matches else 'ignored'
+        api('/api/review', 'PATCH', {'vodId': vod['id'], 'status': status})
 
 
 def main():
@@ -230,6 +231,7 @@ def main():
         except (json.JSONDecodeError, OSError):
             previous_report = []
     processed_urls = {item.get('url') for item in previous_report}
+    matched_vod_ids = {match.get('vod_id') for match in data.get('matches', [])}
     pending = [vod for vod in data['vods'] if vod['status'] == 'pending' and vod.get('url') not in processed_urls]
     if not pending and INCLUDE_HISTORY:
         start = datetime.fromisoformat(os.getenv('ANALYZE_FROM', '2026-07-01')).replace(tzinfo=timezone.utc)
@@ -237,6 +239,8 @@ def main():
             vod for vod in data['vods']
             if 'barmitzva' in vod.get('title', '').lower()
             and datetime.fromisoformat(vod['published_at'].replace('Z', '+00:00')) >= start
+            and vod.get('status') == 'reviewed'
+            and vod.get('id') not in matched_vod_ids
             and vod.get('url') not in processed_urls
         ]
         if pending:
