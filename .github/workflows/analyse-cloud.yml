@@ -39,10 +39,9 @@ jobs:
           SITE_URL: https://barmitzva-fc.vercel.app
           ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
           AUTO_PUBLISH: "true"
-          INCLUDE_HISTORY: "false"
+          INCLUDE_HISTORY: "true"
           MARK_SCANNED: "true"
           MAX_VODS: "1"
           SAMPLE_SECONDS: "5"
           MIN_CONFIRMATIONS: "3"
         run: python analyze.py
-
