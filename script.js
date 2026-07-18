@@ -55,11 +55,6 @@ async function loadOfficialStats() {
     document.querySelector('.track-wins').style.width = `${(stats.wins || 0) / total * 100}%`;
     document.querySelector('.track-draws').style.width = `${(stats.draws || 0) / total * 100}%`;
     document.querySelector('.track-losses').style.width = `${(stats.losses || 0) / total * 100}%`;
-    const form = document.querySelector('#recent-form');
-    form.innerHTML = (stats.recentForm?.length ? stats.recentForm : ['—']).map(result => {
-      const cls = result === 'V' ? 'win' : result === 'D' ? 'loss' : 'draw';
-      return `<b class="${cls}">${result}</b>`;
-    }).join('');
     status.textContent = stats.updatedAt ? `Dernière validation : ${new Date(stats.updatedAt).toLocaleString('fr-FR')}` : 'Aucun résultat validé pour le moment.';
   } catch {
     status.textContent = 'Synchronisation momentanément indisponible.';
