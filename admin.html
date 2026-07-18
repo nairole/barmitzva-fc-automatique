@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Validation des matchs — Barmitzva FC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header><a href="/"><img src="assets/logo.png" alt="">BARMITZVA FC</a><span>VALIDATION DES MATCHS</span></header>
+  <main>
+    <section class="login" id="login">
+      <p class="tag">ACCÈS PRIVÉ</p>
+      <h1>CONNECTER<br><em>L’ÉQUIPE.</em></h1>
+      <p>Entre le code administrateur configuré sur Vercel. Il reste uniquement dans ce navigateur.</p>
+      <form id="login-form"><input id="token" type="password" autocomplete="current-password" placeholder="Code administrateur" required><button>Se connecter</button></form>
+      <p class="error" id="login-error"></p>
+    </section>
+    <section class="dashboard" id="dashboard" hidden>
+      <div class="dashboard-head"><div><p class="tag">TWITCH — WADELYTB</p><h1>À VÉRIFIER.</h1></div><button class="secondary" id="sync">Rechercher les nouveaux lives</button></div>
+      <p class="notice">Une rediffusion peut contenir plusieurs matchs. Ajoute-les un par un, puis indique seulement à la fin que toute la vidéo est traitée.</p>
+      <div class="layout">
+        <div><h2>Rediffusions Barmitzva</h2><div id="vod-list" class="vod-list"></div></div>
+        <aside><h2>Ajouter un résultat</h2>
+          <form id="match-form">
+            <label>Rediffusion<select id="vod" required></select></label>
+            <label>Adversaire<input id="opponent" required placeholder="Nom du club"></label>
+            <div class="score-inputs"><label>Barmitzva FC<input id="goals-for" type="number" min="0" required></label><b>—</b><label>Adversaire<input id="goals-against" type="number" min="0" required></label></div>
+            <label>Date du match<input id="played-at" type="datetime-local" required></label>
+            <button>Valider et publier</button><p class="message" id="message"></p>
+          </form>
+        </aside>
+      </div>
+      <div class="history"><h2>Matchs publiés</h2><div id="match-list"></div></div>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

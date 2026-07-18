@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7a16bd">
+  <meta name="description" content="Site officiel du Barmitzva FC — actualités, équipe, statistiques et boutique.">
+  <title>Barmitzva FC — Site officiel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav-wrap">
+    <a class="brand" href="#accueil" aria-label="Barmitzva FC — accueil">
+      <img src="assets/logo.png" alt="Logo du Barmitzva FC">
+      <span>BARMITZVA <b>FC</b></span>
+    </a>
+    <button class="menu" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+    <nav aria-label="Navigation principale">
+      <a href="#club">Le club</a>
+      <a href="#stats">Stats</a>
+      <a href="#communaute">Communauté</a>
+      <a class="nav-cta" href="https://mosquitoes.fr/collections/all" target="_blank" rel="noopener">Boutique ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> Site officiel</p>
+        <h1>PLUS QU’UN CLUB.<br><em>UNE FAMILLE.</em></h1>
+        <p class="lead">Bienvenue chez Barmitzva FC. Un collectif uni par le jeu, la passion et l’envie de marquer son époque.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#club">Découvrir le club <span>↓</span></a>
+          <a class="button ghost" href="https://mosquitoes.fr/collections/all" target="_blank" rel="noopener">Voir les maillots <span>↗</span></a>
+        </div>
+      </div>
+      <div class="crest-stage reveal" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <span class="stage-label top">BFC — MMXXIII</span>
+        <img src="assets/logo.png" alt="">
+        <span class="stage-label bottom">PASSION • UNITÉ • AMBITION</span>
+      </div>
+      <div class="scroll">SCROLL <span></span></div>
+    </section>
+
+    <section class="ticker" aria-label="Valeurs du club">
+      <div>PASSION <i>✦</i> UNITÉ <i>✦</i> AMBITION <i>✦</i> BARMITZVA FC <i>✦</i> PASSION <i>✦</i> UNITÉ <i>✦</i></div>
+    </section>
+
+    <section class="club section" id="club">
+      <div class="section-tag reveal">01 — LE CLUB</div>
+      <div class="club-grid">
+        <div class="reveal">
+          <h2>NOTRE<br><span>IDENTITÉ.</span></h2>
+        </div>
+        <div class="club-copy reveal">
+          <p class="large">Barmitzva FC, c’est une équipe née d’une même envie : <strong>jouer ensemble et aller plus loin.</strong></p>
+          <p>Sur le terrain comme en dehors, nous défendons un football vivant, généreux et spectaculaire. Chaque match écrit une nouvelle page de notre histoire.</p>
+          <div class="values">
+            <article><b>01</b><h3>Passion</h3><p>On joue chaque ballon comme si c’était le dernier.</p></article>
+            <article><b>02</b><h3>Collectif</h3><p>Un seul blason, une seule équipe, une même direction.</p></article>
+            <article><b>03</b><h3>Ambition</h3><p>Progresser, surprendre et viser toujours plus haut.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats section" id="stats">
+      <div class="stats-head reveal">
+        <div><div class="section-tag light">02 — L’ÉQUIPE</div><h2>LES CHIFFRES<br><span>DU COLLECTIF.</span></h2></div>
+        <p id="stats-status">Connexion aux données officielles du club…</p>
+      </div>
+      <div class="stats-dashboard reveal">
+        <article class="record-panel">
+          <div class="record-topline"><span>BILAN GLOBAL</span><small>DEPUIS LE 1ER JUILLET</small></div>
+          <div class="record-main">
+            <div><strong data-count="0" data-stat="played">0</strong><span>MATCHS<br>ANALYSÉS</span></div>
+            <div class="win-rate" id="win-rate"><b data-stat-rate>0%</b><small>TAUX DE<br>VICTOIRE</small></div>
+          </div>
+          <div class="record-breakdown">
+            <div><i class="result-dot victory"></i><span>Victoires</span><strong data-stat="wins">0</strong></div>
+            <div><i class="result-dot neutral"></i><span>Nuls</span><strong data-stat="draws">0</strong></div>
+            <div><i class="result-dot defeat"></i><span>Défaites</span><strong data-stat="losses">0</strong></div>
+          </div>
+          <div class="record-track" aria-hidden="true"><span class="track-wins"></span><span class="track-draws"></span><span class="track-losses"></span></div>
+        </article>
+
+        <div class="performance-grid">
+          <article><span>Buts marqués</span><strong data-stat="goalsFor">0</strong><small data-stat-label="goals-average">— PAR MATCH</small></article>
+          <article><span>Buts encaissés</span><strong data-stat="goalsAgainst">0</strong><small>TOUS MATCHS CONFONDUS</small></article>
+          <article><span>Différence de buts</span><strong class="positive-stat" data-stat="goalDifference">0</strong><small>BILAN OFFENSIF</small></article>
+          <article><span>Clean sheets</span><strong data-stat="cleanSheets">0</strong><small>MATCHS SANS ENCAISSER</small></article>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <div><span>FORME RÉCENTE</span><small>LES 5 DERNIERS MATCHS</small></div>
+        <div id="recent-form"><b class="draw">—</b></div>
+        <strong><span data-stat="points">0</span><small>PTS / 15</small></strong>
+      </div>
+
+    </section>
+
+    <section class="shop section">
+      <div class="shop-card reveal">
+        <div class="shop-copy">
+          <div class="section-tag light">03 — BOUTIQUE OFFICIELLE</div>
+          <h2>PORTE<br>NOS <span>COULEURS.</span></h2>
+          <p>La collection Barmitzva FC 2025 est disponible. Domicile, extérieur ou third : choisis ton maillot.</p>
+          <a class="button white" href="https://mosquitoes.fr/products/maillot-domicile-barmitzva-fc-2024-2025" target="_blank" rel="noopener">Voir le maillot domicile <span>↗</span></a>
+        </div>
+        <a class="shirt real-shirt" href="https://mosquitoes.fr/products/maillot-domicile-barmitzva-fc-2024-2025" target="_blank" rel="noopener" aria-label="Voir le maillot domicile Barmitzva FC 2025 dans la boutique">
+          <span class="product-pill">DOMICILE 2025 <b>↗</b></span>
+          <img src="assets/maillot-domicile.png" alt="Maillot domicile officiel Barmitzva FC 2025">
+        </a>
+      </div>
+    </section>
+
+    <section class="community section" id="communaute">
+      <div class="section-tag reveal">04 — LA COMMUNAUTÉ</div>
+      <div class="community-grid">
+        <div class="reveal"><h2>REJOINS<br><span>L’AVENTURE.</span></h2><p>Les matchs, les coulisses et les meilleurs moments du club, en direct avec Wadel et toute la communauté.</p></div>
+        <div class="social-links reveal">
+          <a href="https://www.twitch.tv/wadelytb" target="_blank" rel="noopener">
+            <span class="social-icon twitch" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.3 2 2.9 5.7v15.1h5.2V24l3.3-3.2h4l5.7-5.7V2H4.3Zm14.8 12.2-3.3 3.3h-5.2l-2.8 2.7v-2.7H4.9V4h14.2v10.2Zm-3-6.8h-2v5.7h2V7.4Zm-5.3 0h-2v5.7h2V7.4Z"/></svg></span>
+            <div><small>EN DIRECT SUR</small><strong>TWITCH — WADELYTB</strong></div><b>↗</b>
+          </a>
+          <a href="https://discord.gg/gVVk3k28Fv" target="_blank" rel="noopener">
+            <span class="social-icon discord" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.5 5.3A16.3 16.3 0 0 0 15.4 4l-.5 1.1a15.4 15.4 0 0 0-5.7 0L8.6 4a16.7 16.7 0 0 0-4.1 1.3C1.9 9.2 1.2 13 1.5 16.7a16.6 16.6 0 0 0 5 2.5l1.2-1.7-1.6-.8.4-.3a11.7 11.7 0 0 0 11 0l.4.3-1.7.8 1.2 1.7a16.5 16.5 0 0 0 5-2.5c.4-4.3-.7-8-2.9-11.4ZM8.7 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.9 2.2-1.9 2.2Zm6.6 0c-1.1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg></span>
+            <div><small>REJOINDRE LE</small><strong>DISCORD DE WADEL</strong></div><b>↗</b>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><img src="assets/logo.png" alt=""><span>BARMITZVA FC</span></div>
+    <p>© 2026 Barmitzva FC. Tous droits réservés.</p>
+    <a href="#accueil">RETOUR EN HAUT ↑</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
