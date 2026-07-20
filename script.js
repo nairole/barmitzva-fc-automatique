@@ -70,8 +70,23 @@ const giveawayOpen = document.querySelector('.giveaway-open');
 if (giveawayModal && giveawayForm && giveawayOpen) {
   const countdown = document.querySelector('#giveaway-countdown');
   const opensAt = new Date('2026-07-20T23:30:00+02:00').getTime();
+  const closesAt = new Date('2026-07-21T00:30:00+02:00').getTime();
   const updateCountdown = () => {
-    const remaining = Math.max(0, opensAt - Date.now());
+    const now = Date.now();
+    if (now >= closesAt) {
+      giveawayOpen.disabled = true;
+      countdown.classList.remove('open');
+      countdown.classList.add('closed');
+      countdown.querySelector('span').textContent = 'INSCRIPTIONS CLOSES';
+      countdown.querySelector('strong').textContent = 'CONCOURS TERMINÉ';
+      if (!giveawayModal.hidden) {
+        giveawayModal.hidden = true;
+        document.body.classList.remove('modal-open');
+      }
+      return true;
+    }
+
+    const remaining = Math.max(0, opensAt - now);
     const hours = Math.floor(remaining / 3600000);
     const minutes = Math.floor((remaining % 3600000) / 60000);
     const seconds = Math.floor((remaining % 60000) / 1000);
@@ -83,7 +98,7 @@ if (giveawayModal && giveawayForm && giveawayOpen) {
       countdown.classList.add('open');
       countdown.querySelector('span').textContent = 'CONCOURS OUVERT';
       countdown.querySelector('strong').textContent = 'PARTICIPE MAINTENANT';
-      return true;
+      return false;
     }
     return false;
   };
