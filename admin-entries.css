@@ -1,0 +1,72 @@
+.entries-panel {
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, #1d1522, #151118);
+}
+
+.entries-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.entries-head h2 { margin: 7px 0 0; }
+
+.count {
+  display: inline-grid;
+  min-width: 34px;
+  height: 34px;
+  margin-left: 8px;
+  padding: 0 9px;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--purple);
+  font-size: .85rem;
+}
+
+.compact { padding: 11px 16px; }
+.entries-note { color: var(--muted); font-size: .8rem; }
+.entries-table-wrap { margin-top: 22px; overflow-x: auto; }
+
+.entries-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+}
+
+.entries-table th,
+.entries-table td {
+  padding: 15px 12px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+
+.entries-table th {
+  color: var(--muted);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.entries-table td { font-size: .86rem; }
+
+.platform {
+  display: inline-block;
+  margin-right: 9px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: .58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.platform.twitch { background: #6f32a3; }
+.platform.discord { background: #394895; }
+
+@media (max-width: 800px) {
+  .entries-head { align-items: flex-start; }
+  .entries-panel { padding: 20px; }
+}

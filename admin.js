@@ -20,6 +20,20 @@ function render(data) {
   document.querySelector('#match-list').innerHTML = data.matches.length ? data.matches.map(match => `<article class="match-row"><span>Barmitzva FC — ${escapeHtml(match.opponent)}</span><b>${match.goals_for} — ${match.goals_against}</b><small>${new Date(match.played_at).toLocaleString('fr-FR')}</small></article>`).join('') : '<p>Aucun match publié.</p>';
 }
 
+function renderEntries(data) {
+  const entries = Array.isArray(data.entries) ? data.entries : [];
+  document.querySelector('#entry-count').textContent = entries.length;
+  document.querySelector('#entry-list').innerHTML = entries.length
+    ? entries.map(entry => `<tr><td><span class="platform twitch">Twitch</span>${escapeHtml(entry.twitch_username)}</td><td><span class="platform discord">Discord</span>${escapeHtml(entry.discord_username)}</td><td>${new Date(entry.created_at).toLocaleString('fr-FR')}</td></tr>`).join('')
+    : '<tr><td colspan="3">Aucune participation pour le moment.</td></tr>';
+  document.querySelector('#entries-error').textContent = '';
+}
+
+async function loadEntries() {
+  try { renderEntries(await api('/api/contest-entries')); }
+  catch (error) { document.querySelector('#entries-error').textContent = error.message; }
+}
+
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 
 async function openDashboard() {
@@ -27,6 +41,7 @@ async function openDashboard() {
   login.hidden = true;
   dashboard.hidden = false;
   render(data);
+  await loadEntries();
 }
 
 loginForm.addEventListener('submit', async event => {
@@ -67,6 +82,15 @@ document.querySelector('#sync').addEventListener('click', async event => {
   try { await api('/api/sync'); render(await api('/api/review')); }
   catch (error) { alert(error.message); }
   finally { button.disabled = false; button.textContent = 'Rechercher les nouveaux lives'; }
+});
+
+document.querySelector('#refresh-entries').addEventListener('click', async event => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  button.textContent = 'Actualisation…';
+  await loadEntries();
+  button.disabled = false;
+  button.textContent = 'Actualiser';
 });
 
 document.querySelector('#played-at').value = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0,16);

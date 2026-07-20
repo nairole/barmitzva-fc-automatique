@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin-entries.css">
 </head>
 <body>
   <header><a href="/"><img src="assets/logo.png" alt="">BARMITZVA FC</a><span>VALIDATION DES MATCHS</span></header>
@@ -36,6 +37,20 @@
         </aside>
       </div>
       <div class="history"><h2>Matchs publiés</h2><div id="match-list"></div></div>
+      <section class="entries-panel" aria-labelledby="entries-title">
+        <div class="entries-head">
+          <div><p class="tag">CONCOURS MAXIKITS</p><h2 id="entries-title">Participations <span id="entry-count" class="count">0</span></h2></div>
+          <button class="secondary compact" id="refresh-entries" type="button">Actualiser</button>
+        </div>
+        <p class="entries-note">Cette liste est privée et visible uniquement après connexion avec le code administrateur.</p>
+        <div class="entries-table-wrap">
+          <table class="entries-table">
+            <thead><tr><th>Pseudo Twitch</th><th>Pseudo Discord</th><th>Inscription</th></tr></thead>
+            <tbody id="entry-list"><tr><td colspan="3">Chargement…</td></tr></tbody>
+          </table>
+        </div>
+        <p class="error" id="entries-error"></p>
+      </section>
     </section>
   </main>
   <script src="admin.js"></script>
