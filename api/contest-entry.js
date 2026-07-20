@@ -2,7 +2,7 @@ import { supabase } from './_supabase.js';
 
 const clean = value => String(value || '').trim();
 const opensAt = new Date('2026-07-20T23:30:00+02:00').getTime();
-const closesAt = new Date('2026-07-21T00:30:00+02:00').getTime();
+const closesAt = new Date('2026-07-21T01:05:00+02:00').getTime();
 
 export default async function handler(request, response) {
   if (request.method !== 'POST') return response.status(405).json({ error: 'Méthode non autorisée.' });
