@@ -33,8 +33,15 @@ function renderEntries(data) {
 }
 
 async function loadEntries() {
-  try { renderEntries(await api('/api/contest-entries')); }
-  catch (error) { document.querySelector('#entries-error').textContent = error.message; }
+  try {
+    renderEntries(await api('/api/contest-entries'));
+    return contestEntries;
+  } catch (error) {
+    contestEntries = [];
+    document.querySelector('#download-discord').disabled = true;
+    document.querySelector('#entries-error').textContent = error.message;
+    return [];
+  }
 }
 
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
@@ -96,8 +103,15 @@ document.querySelector('#refresh-entries').addEventListener('click', async event
   button.textContent = 'Actualiser';
 });
 
-document.querySelector('#download-discord').addEventListener('click', () => {
-  if (!contestEntries.length) return;
+document.querySelector('#download-discord').addEventListener('click', async event => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  button.textContent = 'Préparation du fichier…';
+  await loadEntries();
+  if (!contestEntries.length) {
+    button.textContent = 'Télécharger les pseudos Discord';
+    return;
+  }
   const content = contestEntries.map(entry => entry.discord_username).join('\n');
   const file = new Blob([content], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(file);
@@ -107,7 +121,9 @@ document.querySelector('#download-discord').addEventListener('click', () => {
   document.body.appendChild(link);
   link.click();
   link.remove();
-  URL.revokeObjectURL(url);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  button.disabled = false;
+  button.textContent = 'Télécharger les pseudos Discord';
 });
 
 document.querySelector('#played-at').value = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0,16);
