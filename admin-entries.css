@@ -13,6 +13,7 @@
 }
 
 .entries-head h2 { margin: 7px 0 0; }
+.entries-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 
 .count {
   display: inline-grid;
@@ -68,5 +69,7 @@
 
 @media (max-width: 800px) {
   .entries-head { align-items: flex-start; }
+  .entries-head { flex-direction: column; }
+  .entries-actions { width: 100%; justify-content: flex-start; }
   .entries-panel { padding: 20px; }
 }

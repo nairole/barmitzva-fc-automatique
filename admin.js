@@ -3,6 +3,7 @@ const dashboard = document.querySelector('#dashboard');
 const loginForm = document.querySelector('#login-form');
 const matchForm = document.querySelector('#match-form');
 let adminToken = sessionStorage.getItem('bfc_admin_token') || '';
+let contestEntries = [];
 
 const api = async (url, options = {}) => {
   const response = await fetch(url, { ...options, headers: { Authorization: `Bearer ${adminToken}`, 'Content-Type': 'application/json', ...options.headers } });
@@ -22,7 +23,9 @@ function render(data) {
 
 function renderEntries(data) {
   const entries = Array.isArray(data.entries) ? data.entries : [];
+  contestEntries = entries;
   document.querySelector('#entry-count').textContent = entries.length;
+  document.querySelector('#download-discord').disabled = entries.length === 0;
   document.querySelector('#entry-list').innerHTML = entries.length
     ? entries.map(entry => `<tr><td><span class="platform twitch">Twitch</span>${escapeHtml(entry.twitch_username)}</td><td><span class="platform discord">Discord</span>${escapeHtml(entry.discord_username)}</td><td>${new Date(entry.created_at).toLocaleString('fr-FR')}</td></tr>`).join('')
     : '<tr><td colspan="3">Aucune participation pour le moment.</td></tr>';
@@ -91,6 +94,20 @@ document.querySelector('#refresh-entries').addEventListener('click', async event
   await loadEntries();
   button.disabled = false;
   button.textContent = 'Actualiser';
+});
+
+document.querySelector('#download-discord').addEventListener('click', () => {
+  if (!contestEntries.length) return;
+  const content = contestEntries.map(entry => entry.discord_username).join('\n');
+  const file = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(file);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'pseudos-discord-concours.txt';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 });
 
 document.querySelector('#played-at').value = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0,16);
