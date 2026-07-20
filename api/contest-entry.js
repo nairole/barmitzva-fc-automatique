@@ -1,9 +1,15 @@
 import { supabase } from './_supabase.js';
 
 const clean = value => String(value || '').trim();
+const opensAt = new Date('2026-07-20T23:30:00+02:00').getTime();
+const closesAt = new Date('2026-07-21T00:30:00+02:00').getTime();
 
 export default async function handler(request, response) {
   if (request.method !== 'POST') return response.status(405).json({ error: 'Méthode non autorisée.' });
+
+  const now = Date.now();
+  if (now < opensAt) return response.status(403).json({ error: 'Les inscriptions ouvrent à 23 h 30.' });
+  if (now >= closesAt) return response.status(410).json({ error: 'Les inscriptions au concours sont closes.' });
 
   const twitchUsername = clean(request.body?.twitchUsername);
   const discordUsername = clean(request.body?.discordUsername);
