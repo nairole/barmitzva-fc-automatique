@@ -70,7 +70,7 @@ const giveawayOpen = document.querySelector('.giveaway-open');
 if (giveawayModal && giveawayForm && giveawayOpen) {
   const countdown = document.querySelector('#giveaway-countdown');
   const opensAt = new Date('2026-07-20T23:30:00+02:00').getTime();
-  const closesAt = new Date('2026-07-21T00:30:00+02:00').getTime();
+  const closesAt = new Date('2026-07-21T01:00:00+02:00').getTime();
   const updateCountdown = () => {
     const now = Date.now();
     if (now >= closesAt) {
