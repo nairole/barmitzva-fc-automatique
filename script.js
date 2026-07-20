@@ -61,3 +61,55 @@ async function loadOfficialStats() {
   }
 }
 loadOfficialStats();
+
+const giveawayModal = document.querySelector('#giveaway-modal');
+const giveawayForm = document.querySelector('#giveaway-form');
+const giveawayMessage = document.querySelector('#giveaway-message');
+const giveawayOpen = document.querySelector('.giveaway-open');
+
+if (giveawayModal && giveawayForm && giveawayOpen) {
+  const closeGiveaway = () => {
+    giveawayModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    giveawayOpen.focus();
+  };
+
+  giveawayOpen.addEventListener('click', () => {
+    giveawayModal.hidden = false;
+    document.body.classList.add('modal-open');
+    giveawayMessage.textContent = '';
+    giveawayMessage.className = 'giveaway-message';
+    document.querySelector('#twitch-username').focus();
+  });
+
+  giveawayModal.querySelectorAll('[data-giveaway-close]').forEach(button => button.addEventListener('click', closeGiveaway));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !giveawayModal.hidden) closeGiveaway();
+  });
+
+  giveawayForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const submit = giveawayForm.querySelector('button[type="submit"]');
+    const data = new FormData(giveawayForm);
+    submit.disabled = true;
+    giveawayMessage.textContent = 'Inscription en cours…';
+    giveawayMessage.className = 'giveaway-message';
+    try {
+      const response = await fetch('/api/contest-entry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ twitchUsername: data.get('twitchUsername'), discordUsername: data.get('discordUsername') })
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Inscription impossible.');
+      giveawayMessage.textContent = 'Participation validée ! Bonne chance 💜';
+      giveawayMessage.className = 'giveaway-message success';
+      giveawayForm.reset();
+    } catch (error) {
+      giveawayMessage.textContent = error.message;
+      giveawayMessage.className = 'giveaway-message error';
+    } finally {
+      submit.disabled = false;
+    }
+  });
+}

@@ -116,8 +116,24 @@
       </div>
     </section>
 
+    <section class="giveaway section" id="concours">
+      <div class="giveaway-card reveal">
+        <div class="giveaway-logo-wrap">
+          <span>SPONSOR OFFICIEL</span>
+          <img src="assets/maxikits-logo.png" alt="Maxikits">
+        </div>
+        <div class="giveaway-copy">
+          <div class="section-tag light">04 — CONCOURS MAXIKITS</div>
+          <h2>100 € DE<br><span>MAILLOTS À GAGNER.</span></h2>
+          <p>Notre sponsor Maxikits offre 100 € de maillots de football à un membre de la communauté Barmitzva FC.</p>
+          <button class="button white giveaway-open" type="button">Je participe <span>→</span></button>
+          <small>Participation gratuite · Une inscription par personne</small>
+        </div>
+      </div>
+    </section>
+
     <section class="community section" id="communaute">
-      <div class="section-tag reveal">04 — LA COMMUNAUTÉ</div>
+      <div class="section-tag reveal">05 — LA COMMUNAUTÉ</div>
       <div class="community-grid">
         <div class="reveal"><h2>REJOINS<br><span>L’AVENTURE.</span></h2><p>Les matchs, les coulisses et les meilleurs moments du club, en direct avec Wadel et toute la communauté.</p></div>
         <div class="social-links reveal">
@@ -133,6 +149,26 @@
       </div>
     </section>
   </main>
+
+  <div class="giveaway-modal" id="giveaway-modal" role="dialog" aria-modal="true" aria-labelledby="giveaway-title" hidden>
+    <div class="giveaway-backdrop" data-giveaway-close></div>
+    <div class="giveaway-dialog">
+      <button class="giveaway-close" type="button" data-giveaway-close aria-label="Fermer le formulaire">×</button>
+      <img src="assets/maxikits-logo.png" alt="Maxikits">
+      <p class="section-tag">CONCOURS BARMITZVA FC × MAXIKITS</p>
+      <h2 id="giveaway-title">TENTE TA CHANCE.</h2>
+      <p>Renseigne tes deux pseudos pour valider ta participation au tirage au sort.</p>
+      <form id="giveaway-form">
+        <label for="twitch-username">Pseudo Twitch</label>
+        <input id="twitch-username" name="twitchUsername" type="text" minlength="3" maxlength="25" autocomplete="off" placeholder="Ex. Wadelytb" required>
+        <label for="discord-username">Pseudo Discord</label>
+        <input id="discord-username" name="discordUsername" type="text" minlength="2" maxlength="32" autocomplete="off" placeholder="Ex. wadel" required>
+        <button class="button primary" type="submit">Valider ma participation <span>→</span></button>
+        <p class="giveaway-message" id="giveaway-message" role="status" aria-live="polite"></p>
+      </form>
+      <small>Les pseudos sont utilisés uniquement pour identifier et contacter le gagnant.</small>
+    </div>
+  </div>
 
   <footer>
     <div class="footer-brand"><img src="assets/logo.png" alt=""><span>BARMITZVA FC</span></div>
