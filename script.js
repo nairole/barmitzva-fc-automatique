@@ -68,6 +68,30 @@ const giveawayMessage = document.querySelector('#giveaway-message');
 const giveawayOpen = document.querySelector('.giveaway-open');
 
 if (giveawayModal && giveawayForm && giveawayOpen) {
+  const countdown = document.querySelector('#giveaway-countdown');
+  const opensAt = new Date('2026-07-20T23:30:00+02:00').getTime();
+  const updateCountdown = () => {
+    const remaining = Math.max(0, opensAt - Date.now());
+    const hours = Math.floor(remaining / 3600000);
+    const minutes = Math.floor((remaining % 3600000) / 60000);
+    const seconds = Math.floor((remaining % 60000) / 1000);
+    countdown.querySelector('[data-countdown-hours]').textContent = String(hours).padStart(2, '0');
+    countdown.querySelector('[data-countdown-minutes]').textContent = String(minutes).padStart(2, '0');
+    countdown.querySelector('[data-countdown-seconds]').textContent = String(seconds).padStart(2, '0');
+    if (remaining === 0) {
+      giveawayOpen.disabled = false;
+      countdown.classList.add('open');
+      countdown.querySelector('span').textContent = 'CONCOURS OUVERT';
+      countdown.querySelector('strong').textContent = 'PARTICIPE MAINTENANT';
+      return true;
+    }
+    return false;
+  };
+  updateCountdown();
+  const countdownTimer = setInterval(() => {
+    if (updateCountdown()) clearInterval(countdownTimer);
+  }, 1000);
+
   const closeGiveaway = () => {
     giveawayModal.hidden = true;
     document.body.classList.remove('modal-open');
