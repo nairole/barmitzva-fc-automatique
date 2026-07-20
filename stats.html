@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7a16bd">
+  <meta name="description" content="Les statistiques officielles du Barmitzva FC.">
+  <title>Statistiques — Barmitzva FC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="stats.css">
+</head>
+<body class="stats-page">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav-wrap scrolled">
+    <a class="brand" href="index.html" aria-label="Barmitzva FC — accueil">
+      <img src="assets/logo.png" alt="Logo du Barmitzva FC">
+      <span>BARMITZVA <b>FC</b></span>
+    </a>
+    <button class="menu" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+    <nav aria-label="Navigation principale">
+      <a href="index.html#club">Le club</a>
+      <a class="active" href="stats.html">Stats</a>
+      <a href="effectif.html">Effectif</a>
+      <a href="index.html#communaute">Communauté</a>
+      <a class="nav-cta" href="https://mosquitoes.fr/collections/all" target="_blank" rel="noopener">Boutique ↗</a>
+    </nav>
+  </header>
+
+  <main class="stats-page-main">
+    <section class="stats section" id="stats">
+      <div class="stats-head reveal">
+        <div><div class="section-tag light">02 — LES STATS</div><h1>LES CHIFFRES<br><span>DU COLLECTIF.</span></h1></div>
+        <p id="stats-status">Connexion aux données officielles du club…</p>
+      </div>
+      <div class="stats-dashboard reveal">
+        <article class="record-panel">
+          <div class="record-topline"><span>BILAN GLOBAL</span><small>DEPUIS LE 1ER JUILLET</small></div>
+          <div class="record-main">
+            <div><strong data-stat="played">0</strong><span>MATCHS<br>ANALYSÉS</span></div>
+            <div class="win-rate" id="win-rate"><b data-stat-rate>0%</b><small>TAUX DE<br>VICTOIRE</small></div>
+          </div>
+          <div class="record-breakdown">
+            <div><i class="result-dot victory"></i><span>Victoires</span><strong data-stat="wins">0</strong></div>
+            <div><i class="result-dot neutral"></i><span>Nuls</span><strong data-stat="draws">0</strong></div>
+            <div><i class="result-dot defeat"></i><span>Défaites</span><strong data-stat="losses">0</strong></div>
+          </div>
+          <div class="record-track" aria-hidden="true"><span class="track-wins"></span><span class="track-draws"></span><span class="track-losses"></span></div>
+        </article>
+
+        <div class="performance-grid">
+          <article><span>Buts marqués</span><strong data-stat="goalsFor">0</strong><small data-stat-label="goals-average">— PAR MATCH</small></article>
+          <article><span>Buts encaissés</span><strong data-stat="goalsAgainst">0</strong><small>TOUS MATCHS CONFONDUS</small></article>
+          <article><span>Différence de buts</span><strong class="positive-stat" data-stat="goalDifference">0</strong><small>BILAN OFFENSIF</small></article>
+          <article><span>Clean sheets</span><strong data-stat="cleanSheets">0</strong><small>MATCHS SANS ENCAISSER</small></article>
+        </div>
+      </div>
+      <div class="stats-page-actions">
+        <a class="button ghost" href="effectif.html">Voir l’effectif <span>→</span></a>
+        <a class="button ghost" href="index.html">Retour à l’accueil <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><img src="assets/logo.png" alt=""><span>BARMITZVA FC</span></div>
+    <p>© 2026 Barmitzva FC. Tous droits réservés.</p>
+    <a href="index.html">RETOUR À L’ACCUEIL →</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

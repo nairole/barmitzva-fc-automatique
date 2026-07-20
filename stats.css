@@ -1,0 +1,9 @@
+.stats-page{background:#100c13}
+.stats-page .nav-wrap nav .active{color:#c967f2}
+.stats-page-main{padding-top:92px;background:#100c13}
+.stats-page .stats{min-height:calc(100vh - 92px);padding-top:90px}
+.stats-page .stats-head h1{margin:0;font:clamp(3.2rem,6vw,7rem)/.86 "Archivo Black",sans-serif;letter-spacing:-.055em}
+.stats-page .stats-head h1 span{color:transparent;-webkit-text-stroke:1.5px #b346e7}
+.stats-page-actions{display:flex;gap:14px;justify-content:flex-end;max-width:1500px;margin:35px auto 0}
+.stats-page-actions .button{border-color:rgba(255,255,255,.22)}
+@media(max-width:700px){.stats-page-main{padding-top:72px}.stats-page .stats{padding-top:65px}.stats-page-actions{flex-direction:column}.stats-page-actions .button{justify-content:center}}
